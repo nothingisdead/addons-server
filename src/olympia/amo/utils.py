@@ -706,7 +706,7 @@ class HttpResponseSendFile(HttpResponse):
         super(HttpResponseSendFile, self).__init__('', status=status,
                                                    content_type=content_type)
 
-        # Ensure files can be downloaded in CORS-restricted.
+        # Ensure files can be downloaded in CORS-restricted environments.
         self['Access-Control-Allow-Origin'] = '*';
 
         header_path = self.path
