@@ -705,6 +705,10 @@ class HttpResponseSendFile(HttpResponse):
         self.path = path
         super(HttpResponseSendFile, self).__init__('', status=status,
                                                    content_type=content_type)
+
+        # Ensure files can be downloaded in CORS-restricted.
+        self['Access-Control-Allow-Origin'] = '*';
+
         header_path = self.path
         if isinstance(header_path, unicode):
             header_path = header_path.encode('utf8')
